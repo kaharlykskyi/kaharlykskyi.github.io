@@ -1,5 +1,7 @@
 ## Binary Studio Academy 2017
 
+![Y U NO GIT](/assets/y-u-no-git.png)
+
 ### Вступ до Git
  
 * Створюємо локальний git-репозиторій з допомогою `git init`
