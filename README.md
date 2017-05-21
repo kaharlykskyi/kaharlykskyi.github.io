@@ -1,9 +1,14 @@
-## Binary Studio Academy 2017
+[![Binary Studio Academy](/assets/logo.png)](http://academy.binary-studio.com)  
+*Безкоштовна онлайн IT академія, яка забезпечує професійне перетворення*
 
-![Y U NO GIT](/assets/y-u-no-git.png)
+------
+
+## Git & how to use it
+
+------
 
 ### 1. Вступ до Git
- 
+
 * Створюємо локальний git-репозиторій з допомогою `git init`
 * Захоплюємо зміни в репозиторії за допомогою `git add`, `git reset`, `git commit`
 * Ізолюємо розробку різного функціоналу в окремих `git branch`-ах
@@ -18,6 +23,8 @@
 * Відправляємо репозиторій до віддаленого сервера через `git push`
 * Клонуємо віддалені репозиторії з `git clone`
 * Синхронізуємо локальний репозиторій з віддаленим через `git pull`
+
+![Y U NO GIT](/assets/y-u-no-git.png)
 
 ### 2. Домашнє завдання
 
