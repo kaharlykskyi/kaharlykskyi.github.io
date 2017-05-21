@@ -1,4 +1,4 @@
-<a href="http://academy.binary-studio.com" style="background-image: url(/assets/logo.png); background-repeat: no-repeat; width: 200px; height: 40px; text-indent: -9999px;">Binary Studio Academy</a>
+[![Binary Studio Academy](/assets/logo.png)](http://academy.binary-studio.com)  
 *Безкоштовна онлайн IT академія, яка забезпечує професійне перетворення*
 
 ------
