@@ -1,7 +1,7 @@
 [![Binary Studio Academy](/assets/logo.png)](http://academy.binary-studio.com)  
 *Безкоштовна онлайн IT академія, яка забезпечує професійне перетворення*
 
-------
+--------
 
 ## Git & how to use it
 #### [Вступ до Git](#1-Вступ-до-git)
