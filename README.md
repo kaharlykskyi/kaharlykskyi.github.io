@@ -3,12 +3,12 @@
 
 ---------
 **Зміст:**
-1. [**JavaScript <sup>for non-frontenders</sup>**](#1-javascript-for-non-frontenders)
+1. [**JavaScript <sup><small><em>(for non-frontenders)</em></small></sup>**](#1-javascript-for-non-frontenders)
 2. [**Git & how to use it**](#2-git--how-to-use-it)
 
 ---------
 
-## 1. JavaScript <sup>for non-frontenders</sup>
+## 1. JavaScript <sup><small><em>(for non-frontenders)</em></small></sup>
 
 ---------
 
