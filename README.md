@@ -13,6 +13,7 @@
 
 ### 1. Вступ до JavaScript
 
+* Дісклеймер
 * Коротка історія JavaScript (розкажи про специфікації і призначення)
 * Браузер, DOM, вузли, API, дебаггер (як почати писати, entry point)
 * Scope, [event loop](https://developer.mozilla.org/en/docs/Web/JavaScript/EventLoop) (що впливає на швидкість, паралелізм, про динамічну пам'ять і [типізацію](https://www.facebook.com/photo.php?fbid=1799822590305892&set=a.1400231013598387.1073741828.100008345043783&type=3), [значення змінних vs посилання на змінні](https://codeburst.io/explaining-value-vs-reference-in-javascript-647a975e12a0), замикання тощо)
