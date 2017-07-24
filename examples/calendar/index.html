@@ -12,7 +12,7 @@
 		<!-- jQuery -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<!-- Semantic UI -->
-		<link href="http://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.11/semantic.css" rel="stylesheet">
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.11/semantic.css" rel="stylesheet">
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.11/semantic.min.js"></script>
 		<!-- Lato -->
 		<link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&amp;subset=latin-ext" rel="stylesheet">
@@ -95,7 +95,19 @@
 					this.element.innerHTML = '<nav><a href="#" class="nav prev" draggable="false"><svg viewBox="0 0 512 512"><path d="M189.8,349.7c3.1-3.1,3-8,0-11.3L123.4,264H408c4.4,0,8-3.6,8-8c0-4.4-3.6-8-8-8H123.4l66.3-74.4c2.9-3.4,3.2-8.1,0.1-11.2c-3.1-3.1-8.5-3.3-11.4-0.1c0,0-79.2,87-80,88S96,253.1,96,256s1.6,4.9,2.4,5.7s80,88,80,88c1.5,1.5,3.6,2.3,5.7,2.3C186.2,352,188.2,351.2,189.8,349.7z"/></svg></a><div class="title"><strong>' + year + '</strong></div><a href="#" class="nav next" draggable="false"><svg viewBox="0 0 512 512"><path d="M322.2,349.7c-3.1-3.1-3-8,0-11.3l66.4-74.4H104c-4.4,0-8-3.6-8-8c0-4.4,3.6-8,8-8h284.6l-66.3-74.4c-2.9-3.4-3.2-8.1-0.1-11.2c3.1-3.1,8.5-3.3,11.4-0.1c0,0,79.2,87,80,88s2.4,2.8,2.4,5.7s-1.6,4.9-2.4,5.7s-80,88-80,88c-1.5,1.5-3.6,2.3-5.7,2.3C325.8,352,323.8,351.2,322.2,349.7z"/></svg></a></nav><div class="YYYY" data-w="' + r + '">' + y + '</div>';
 					this.element.querySelector('.prev').addEventListener('click', () => { this.show(--this.year); });
 					this.element.querySelector('.next').addEventListener('click', () => { this.show(++this.year); });
-					this.element.querySelectorAll('.D').forEach((element) => element.addEventListener('click', (event) => { this.callback(event.target.getAttribute('data-date')); }));
+					this.element.querySelectorAll('.D').forEach((element) => {
+						element.addEventListener('click', (event) => {
+							var element = event.target;
+							while (element) {
+								if (element.hasAttribute('data-date')) {
+									this.callback(element.getAttribute('data-date'));
+									break;
+								} else {
+									element = element.parentElement;
+								}
+							}
+						});
+					});
 				}
 			}
 			
