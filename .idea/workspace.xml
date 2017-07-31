@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3b272ed2-04ac-46af-96b0-0187c2d19f8b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/calendar/assets/js/data.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/examples/calendar/assets/js/events.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/examples/calendar/index.html" afterPath="$PROJECT_DIR$/examples/calendar/index.html" />
-    </list>
+    <list default="true" id="3b272ed2-04ac-46af-96b0-0187c2d19f8b" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -249,12 +244,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1501445752538</updated>
-      <workItem from="1501445754090" duration="16681000" />
+      <workItem from="1501445754090" duration="16954000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="16681000" />
+    <option name="totallyTimeSpent" value="16954000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1919" y="-11" width="1922" height="1047" extended-state="6" />
