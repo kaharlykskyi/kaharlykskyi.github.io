@@ -14,6 +14,8 @@
 		<!-- Semantic UI -->
 		<link href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.11/semantic.css" rel="stylesheet">
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.11/semantic.min.js"></script>
+		<script src="assets/js/data.js"></script>
+		<script src="assets/js/events.js"></script>
 		<!-- Lato -->
 		<link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&amp;subset=latin-ext" rel="stylesheet">
 		<!-- OpenSans -->
@@ -54,19 +56,51 @@
 								#calendar > .YYYY > .M[data-w="5"] > .MM > .D { height: calc((100% + 4px) / 5); }
 								#calendar > .YYYY > .M[data-w="6"] > .MM > .D { height: calc((100% + 5px) / 6); }
 								#calendar > .YYYY > .M > .MM > .D { float: left; width: calc((100% + 6px) / 7); position: relative; border: 1px solid #DEDEDE; margin-right: -1px; margin-bottom: -1px; position: relative; display: flex; align-items: center; justify-content: center; color: #333333; background: #FFFFFF; text-decoration: none; }
-								#calendar > .YYYY > .M > .MM > .D.active { font-weight: bold; background: #32358F; color: #FFFFFF; box-shadow: inset 1px 0px 0px #FFFFFF, inset -1px 0px 0px #FFFFFF, inset 0px -1px 0px #FFFFFF, inset 0px 1px 0px #FFFFFF; }
+								#calendar > .YYYY > .M > .MM > .D.active { font-weight: bold; background: #419bec; color: #FFFFFF; box-shadow: inset 1px 0px 0px #FFFFFF, inset -1px 0px 0px #FFFFFF, inset 0px -1px 0px #FFFFFF, inset 0px 1px 0px #FFFFFF; }
 								#calendar > .YYYY > .M > .MM > .D:first-child[data-d="1"] { margin-left: calc(((100% + 6px) / 7) * 1 - 1px); }
 								#calendar > .YYYY > .M > .MM > .D:first-child[data-d="2"] { margin-left: calc(((100% + 6px) / 7) * 2 - 2px); }
 								#calendar > .YYYY > .M > .MM > .D:first-child[data-d="3"] { margin-left: calc(((100% + 6px) / 7) * 3 - 3px); }
 								#calendar > .YYYY > .M > .MM > .D:first-child[data-d="4"] { margin-left: calc(((100% + 6px) / 7) * 4 - 4px); }
 								#calendar > .YYYY > .M > .MM > .D:first-child[data-d="5"] { margin-left: calc(((100% + 6px) / 7) * 5 - 5px); }
 								#calendar > .YYYY > .M > .MM > .D:first-child[data-d="6"] { margin-left: calc(((100% + 6px) / 7) * 6 - 6px); }
-								#calendar > .YYYY > .M > .MM > .D > .num { position: absolute; font-size: 11px; top: 0px; left: 4px; }
+								#calendar > .YYYY > .M > .MM > .D > .num { position: absolute; font-size: 17px; top: 4px; left: 4px; }
 								#calendar > .YYYY > .M > .MM > .D:hover > .num { font-weight: 700; }
+			*:focus {outline: none;}
+			div.content {margin-top: -13px; margin-right: -35px;}
+			.ui.items > .item img.avatar, .ui.items > .item .avatar img { border-radius: 0 !important;}
+			i.ui {font-style: normal;}
+			.ui.labels .label, .ui.label {font-size: 10px;}
+			.ui.avatar.image {border-radius: 0; width: 4em; height: 4em;}
+			.desc {margin: 20px 0 !important; padding-left: 35px !important;}
 		</style>
 	</head>
 	<body>
 		<div id="calendar"></div>
+		<div class="ui modal">
+			<i class="close icon"></i>
+			<div class="header">
+				<span class="event-title"></span>
+			</div>
+			<div class="ui left aligned grid">
+				<div class="left aligned two column row">
+					<div class="column desc">
+						<div class="ui header">Date:</div><span class="event-date"></span>
+						<div class="ui header">Description:</div><p><span class="event-description"></span></p>
+					</div>
+					<div class="column desc">
+						<div class="ui header">Participants:</div>
+						<div class="ui items"></div>
+					</div>
+				</div>
+			</div>
+
+			<div class="actions">
+				<div class="ui positive right labeled icon button">
+					Okay
+					<i class="checkmark icon"></i>
+				</div>
+			</div>
+		</div>
 		<script>
 			/* Calendar */
 			class Calendar {
@@ -83,7 +117,12 @@
 					var m, d1, t = [], y = '', w = 0, r = 0, n = _.reduce(moment.weekdaysShort(), function(n, ddd) { return n += '<div class="ddd" data-ddd="' + ddd + '"></div>'; }, '');
 					for (m = 0; m <= 11; m++) {
 						d1 = moment([year, m, 1]);
-						t.push('<div class="MMMM">' + moment.months()[m] + '</div>' + n + '<div class="MM"><a href="#" class="' + (year == moment().year() && m == moment().month() && 1 == moment().date() ? 'active ' : '') + 'D" data-d="' + d1.day() + '" data-date="' + year + '-' + ('00' + (m + 1)).slice(-2) + '-01" draggable="false"><span class="num">1</span><div class="content"></div></a>' + _.range(2, d1.daysInMonth() + 1).reduce(function(MM, d) { return MM += '<a href="#" class="' + (year == moment().year() && m == moment().month() && d == moment().date() ? 'active ' : '') + 'D" data-date="' + year + '-' + ('00' + (m + 1)).slice(-2) + '-' + ('00' + d).slice(-2) + '" draggable="false">' + '<span class="num">' + d + '</span>' + '<div class="content"></div></a>'; }, '') + '</div>');
+						t.push('<div class="MMMM">' + moment.months()[m] + '</div>' + n + '<div class="MM"><a href="#" class="' + (year == moment().year() && m == moment().month() && 1 == moment().date() ? 'active ' : '') + 'D" data-d="' + d1.day() + '" data-date="' + year + '-' + ('00' + (m + 1)).slice(-2) + '-01" draggable="false"><span class="num">1</span><div class="content"></div></a>' + _.range(2, d1.daysInMonth() + 1).reduce(function(MM, d)
+							{
+						    return MM += '<a href="#" class="' + (year == moment().year() && m == moment().month() && d == moment().date() ? 'active ' : '') + 'D" data-date="' + year + '-' + ('00' + (m + 1)).slice(-2) + '-' + ('00' + d).slice(-2) + '" draggable="false">'
+								+ '<span class="num">' + d + '</span>'
+								+ '<div class="content"></div></a>';
+						    }, '') + '</div>');
 						w = Math.max(w, Math.ceil((d1.day() + d1.daysInMonth()) / 7));
 						if (m == 3 || m == 7 || m == 11) {
 							y += '<div class="M" data-w="' + w + '">' + t.join('</div><div class="M" data-w="' + w + '">') + '</div>';
@@ -112,8 +151,19 @@
 			}
 			
 			new Calendar(document.getElementById('calendar'), 'en', function(date) {
-				alert(date);
+				//alert(date);
 			});
+
+            dateChecker(events);
+
+            $('.label').on('click', function() {
+                getModalView($(this).attr("data-date"));
+
+                $('.ui.modal').modal({
+                        inverted: true,
+                        transition: 'horizontal flip'
+                    }).modal('show');
+            });
 		</script>
 	</body>
 </html>
